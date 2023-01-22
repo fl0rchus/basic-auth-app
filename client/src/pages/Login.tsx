@@ -1,14 +1,17 @@
 import React from "react";
 import { loginRequest } from "../api/auth";
+import { useAuthStore } from "../store/auth";
 
 const Login = () => {
+  const { setToken } = useAuthStore();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const email = (e.currentTarget.elements[0] as HTMLInputElement).value;
     const password = (e.currentTarget.elements[1] as HTMLInputElement).value;
 
     const resLogin = await loginRequest(email, password);
-    console.log(resLogin);
+    setToken(resLogin.data.token);
   };
 
   return (
