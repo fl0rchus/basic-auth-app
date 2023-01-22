@@ -7,6 +7,7 @@ interface AuthStore {
   isAuth: boolean;
   setToken: (token: string) => void;
   setProfile: (profile: any) => void;
+  logout: () => void;
 }
 
 export const useAuthStore = create(
@@ -24,6 +25,12 @@ export const useAuthStore = create(
         set((state) => ({
           profile,
         })),
+      logout: () =>
+        set({
+          token: null,
+          profile: null,
+          isAuth: false,
+        }),
     }),
     {
       name: "authToken",
