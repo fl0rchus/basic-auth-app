@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from "../libs/axios";
 
 export const loginRequest = async (email: string, password: string) => {
-  return axios.post("http://localhost:3000/login", {
+  return axios.post("/login", {
     email,
     password,
   });
 };
 
 export const profileRequest = async () => {
-  return axios.get("http://localhost:3000/profile");
+  return axios.get("/profile");
 };
