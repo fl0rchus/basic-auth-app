@@ -27,6 +27,7 @@ export const loginHandler = (req: Request, res: Response) => {
 //Ruta del perfil que va a estar protegida
 export const profileHandler = (req: Request, res: Response) => {
   return res.json({
+    profile: req.payload,
     message: "profile",
   });
 };

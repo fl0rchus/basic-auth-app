@@ -26,7 +26,7 @@ export const requireAuth = (
         message: "Unauthorize",
       });
 
-    console.log(payload);
+    req.payload = payload;
     next();
   });
 };
