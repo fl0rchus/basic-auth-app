@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 interface AuthStore {
   token: string | null;
   profile: any;
+  isAuth: boolean;
   setToken: (token: string) => void;
   setProfile: (profile: any) => void;
 }
@@ -13,9 +14,11 @@ export const useAuthStore = create(
     (set) => ({
       token: null,
       profile: null,
+      isAuth: false,
       setToken: (token: string) =>
         set((state) => ({
           token,
+          isAuth: true,
         })),
       setProfile: (profile: any) =>
         set((state) => ({
