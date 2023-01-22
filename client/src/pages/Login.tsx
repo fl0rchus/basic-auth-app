@@ -3,7 +3,7 @@ import { loginRequest, profileRequest } from "../api/auth";
 import { useAuthStore } from "../store/auth";
 
 const Login = () => {
-  const { setToken } = useAuthStore();
+  const { setToken, setProfile } = useAuthStore();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -12,7 +12,9 @@ const Login = () => {
 
     const resLogin = await loginRequest(email, password);
     setToken(resLogin.data.token);
+
     const resProfile = await profileRequest();
+    setProfile(resProfile.data.profile);
   };
 
   return (
