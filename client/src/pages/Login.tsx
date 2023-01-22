@@ -1,9 +1,11 @@
 import React from "react";
 import { loginRequest, profileRequest } from "../api/auth";
 import { useAuthStore } from "../store/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { setToken, setProfile } = useAuthStore();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,6 +17,8 @@ const Login = () => {
 
     const resProfile = await profileRequest();
     setProfile(resProfile.data.profile);
+
+    navigate("/profile");
   };
 
   return (
