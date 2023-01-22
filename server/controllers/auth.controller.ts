@@ -23,3 +23,10 @@ export const loginHandler = (req: Request, res: Response) => {
 
   return res.json({ token });
 };
+
+//Ruta del perfil que va a estar protegida
+export const profileHandler = (req: Request, res: Response) => {
+  return res.json({
+    message: "profile",
+  });
+};
