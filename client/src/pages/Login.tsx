@@ -1,5 +1,5 @@
 import React from "react";
-import { loginRequest } from "../api/auth";
+import { loginRequest, profileRequest } from "../api/auth";
 import { useAuthStore } from "../store/auth";
 
 const Login = () => {
@@ -12,6 +12,7 @@ const Login = () => {
 
     const resLogin = await loginRequest(email, password);
     setToken(resLogin.data.token);
+    const resProfile = await profileRequest();
   };
 
   return (
